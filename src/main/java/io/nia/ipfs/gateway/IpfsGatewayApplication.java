@@ -21,12 +21,12 @@ public class IpfsGatewayApplication {
 	}
 
 	@Bean
-	public IPFS ipfs(@Value("ipfs.host") String ipfsHost, @Value("ipfs.port") int ipfsPort) {
+	public IPFS ipfs(@Value("${ipfs.host}") String ipfsHost, @Value("${ipfs.port}") int ipfsPort) {
 		return new IPFS(ipfsHost, ipfsPort);
 	}
 
 	@Bean
-	public IpfsConnector ipfsConnector(@Value("ipns.hashes") String hashes, IPFS ipfs) {
-		return new IpfsConnector(asList(hashes.split(",")), ipfs);
+	public IpfsConnector ipfsConnector(@Value("${ipns.hashes}") String hashes, IPFS ipfs) {
+		return new IpfsConnector(asList(hashes.split(",")), ipfs, ipfs.name);
 	}
 }

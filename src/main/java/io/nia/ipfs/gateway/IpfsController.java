@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
 
 import static org.springframework.web.servlet.HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE;
 
@@ -21,11 +20,10 @@ public class IpfsController {
     }
 
     @RequestMapping("/ipfs/**")
-    public ResponseEntity<String> getArtifactFromIpfs(HttpServletRequest request) {
+    public ResponseEntity<byte[]> getArtifactFromIpfs(HttpServletRequest request) throws IOException {
         String restOfTheUrl = (String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
-        List<String> artifactPath = Arrays.asList(restOfTheUrl.split("/"));
+        String artifactPath = restOfTheUrl.substring("/ipfs".length());
         System.out.println("GET " + restOfTheUrl + " => " + artifactPath);
-        connector.resolve(artifactPath);
-        return ResponseEntity.ok("test " + restOfTheUrl);
+        return ResponseEntity.ok(connector.resolve(artifactPath));
     }
 }
