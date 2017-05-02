@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>ipfs-gateway</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Gateway for Maven to retrieve artifacts from IPFS</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -25,6 +25,14 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>io.ipfs</groupId>
+			<artifactId>java-ipfs-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/ipfs.jar</systemPath>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
