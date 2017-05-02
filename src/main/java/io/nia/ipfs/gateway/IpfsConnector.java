@@ -17,7 +17,6 @@ public class IpfsConnector {
         this.ipns = ipns;
     }
 
-    // TODO implement. It should return something useful
     public byte[] resolve(String artifactPath) throws IOException {
         String repoRoot = ipns.resolve(Multihash.fromBase58(ipnsHashes.get(0)));
         String repoHash = repoRoot.substring("/ipfs/".length());
