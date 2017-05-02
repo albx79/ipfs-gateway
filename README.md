@@ -21,9 +21,19 @@ prevents builds from running.
 
 ## Usage
 
+It's your standard maven project. Create an executable jar with
 
+    mvn package
+
+and run it with
+
+    java -jar target/ipfs-gateway-*.jar
+
+The gateway listens on port 5002 by default. 
+
+(Also, don't forget to run the `ipfs daemon`).
 
 ## Publishing
 
-At the moment
+At the moment this is a manual process (but it could be scripted).
 
